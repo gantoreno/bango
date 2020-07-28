@@ -1,0 +1,9 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !(\.jpg|\.jpeg|\.css|\.svg|\.xml|\.webmanifest|\.png|\.ico)$ [NC]
+RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]
+
+AddType    text/CSS .css
+AddHandler text/css .css
+
+php_value short_open_tag 1

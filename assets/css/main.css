@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100vh;
+    font-family: "MuseoModerno", cursive !important;
+}
+
+code {
+    margin: 0px 2px;
+    border: 1px solid #00000010;
+    padding: 2px 5px 2px 4px;
+    font-family: "DM Mono", monospace !important;
+    border-radius: 3px;
+    background-color: #00000005;
+}
+
+a.nav-link {
+    color: #00000080 !important;
+}
+
+a.nav-link.active {
+    color: #000000e6 !important;
+}
+
+button.rounded {
+    border-radius: 50px !important;
+    padding-left: 25px;
+    padding-right: 25px;
+}

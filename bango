@@ -1,0 +1,17 @@
+#!/usr/bin/php
+<?php
+
+require_once __DIR__."/config/autoload.php";
+
+use \Bango\Cli;
+
+try
+{
+    Cli::parse_action($argv);
+}
+catch (Exception $e)
+{
+    die($e);
+}
+
+exit;
