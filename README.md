@@ -94,11 +94,11 @@ To access variables inside the view, simply use the PHP short open tag notation 
 <!-- ... -->
 
 <div class="profile">
-    <? foreach($person as $key => $value): ?>
+    <?php foreach($person as $key => $value): ?>
         <div class="<?= $key ?>">
             <?=  $value ?>
         </div>
-    <? endif ?>
+    <?php endif ?>
 </div>
 
 <!-- ... -->
