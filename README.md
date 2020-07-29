@@ -2,6 +2,10 @@
     <img src="assets/svg/banner.svg" height="75">
 </p>
 
+## Disclaimer
+
+Bango is a PHP experiment created as a university project of a student (me). It was created within a week, please note that this is not a production-ready framework, there are several security flaws and issues that must be solved before making it available as stable code.
+
 ## About Bango
 
 With Bango, there are zero-tricks; it's just you, and PHP. Bango is the lightweight MVC framework that will allow you to create outstanding web applications with almost no effort and vanilla PHP, thanks to its expressive and elegant syntax, and its carefully designed library of components, such as:
