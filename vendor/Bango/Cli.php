@@ -30,6 +30,8 @@ class Cli
                 case 'migrate':
                     try
                     {
+                        Environment::start();
+                        
                         Database::start($with_db = false);
                         Database::migrate();
                     }
