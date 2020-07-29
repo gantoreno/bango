@@ -12,12 +12,18 @@ class Environment
 {
 
     /**
-     * Read .env file and retrieve the given key's value.
+     * Environment persistance.
+     * 
+     * @var array
+     */
+    private static $environment = [];
+
+    /**
+     * Read .env file and populate the environment variable.
      *
-     * @param  string $key
      * @return string
      */
-    public static function read_env($key)
+    public static function start()
     {
         $env_buffer = File::read_file(".env");
         $env_pairs = explode("\n", $env_buffer);
@@ -29,12 +35,18 @@ class Environment
             $env_key = $env_key_value[0];
             $env_value = $env_key_value[1];
 
-            if ($env_key === $key)
-            {
-                return $env_value;
-            }
+            self::$environment[$env_key] = $env_value;
         }
+    }
 
-        return null;
+    /**
+     * Get a given environment variable's value.
+     * 
+     * @param  string $key
+     * @return string
+     */
+    public static function read_env($key)
+    {
+        return self::$environment[$key];
     }
 }

@@ -20,8 +20,10 @@ class App
     {
         Session::start();
 
+        Environment::start();
+        
         Database::start($with_db = true);
-
+        
         Router::start();
     }
 }
