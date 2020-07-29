@@ -16,7 +16,7 @@ With Bango, there are zero-tricks; it's just you, and PHP. Bango is the lightwei
 -   Total HTTP control.
 -   Zero-pain controller declaration.
 -   Simple authentication system.
--   Accesible database query system.
+-   Accessible database query system.
 
 ## Usage
 
