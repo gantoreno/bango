@@ -21,6 +21,8 @@ services:
   web:
     build: .
     container_name: php_web
+    volumes:
+      - .:/var/www/html
     links:
       - db
     depends_on:
