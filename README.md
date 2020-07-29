@@ -88,7 +88,7 @@ self::create_view('<viewname>.view', [
 
 Notice how an associative array gets passed to the view, this will make the content of the array available as global variables inside the view.
 
-To access variables inside the view, simply use the PHP short open tag notation (NOTE: you'll have to enable them, either on your .htacces or your php.ini file):
+To access variables inside the view, simply use the PHP classic tags:
 
 ```xml
 <!-- ... -->
