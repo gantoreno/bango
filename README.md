@@ -143,9 +143,9 @@ class User extends Model
     {
         $this->bind_entity("users");
         $this->create_fields([
-            "id" => integer, 
-            "email" => string, 
-            "password" => string
+            "id" => "integer", 
+            "email" => "string", 
+            "password" => "string"
         ]);
     }
 }
