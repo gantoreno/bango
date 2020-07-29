@@ -109,7 +109,7 @@ class Model
             $query = substr($query, 0, -2);
             $query .= ")";
             
-            Database::insert_single($query);
+            return Database::insert_single($query);
         }
     }
 
@@ -193,31 +193,34 @@ class Model
         $result = Database::query_all($query);
         $final_array = [];
         
-        foreach ($result as $entry)
+        if ($resut !== NULL || !empty($result))
         {
-            $object = new $class();
-
-            foreach($entry as $key => $value)
+            foreach ($result as $entry)
             {
-                $type = $object->fields[$key]->type;
+                $object = new $class();
 
-                if ($type === "integer")
+                foreach($entry as $key => $value)
                 {
-                    $object->{$key} = (integer) $value;
+                    $type = $object->fields[$key]->type;
+
+                    if ($type === "integer")
+                    {
+                        $object->{$key} = (integer) $value;
+                    }
+                    else if ($type === "boolean")
+                    {
+                        $object->{$key} = (boolean) $value;
+                    }
+                    else
+                    {
+                        $object->{$key} = $value;
+                    }
                 }
-                else if ($type === "boolean")
-                {
-                    $object->{$key} = (boolean) $value;
-                }
-                else
-                {
-                    $object->{$key} = $value;
-                }
+
+                $object->is_insertable = false;
+
+                $final_array[] = $object;
             }
-
-            $object->is_insertable = false;
-
-            $final_array[] = $object;
         }
 
         $options = new class($final_array) {

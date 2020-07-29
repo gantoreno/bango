@@ -74,6 +74,11 @@ class Database
 
         if ($result->num_rows < 1)
         {
+            if (self::$mysqli->affected_rows > 0)
+            {
+                return true;
+            }
+
             return NULL;
         }
 
