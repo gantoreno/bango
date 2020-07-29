@@ -16,7 +16,7 @@ class App
      *
      * @return void
      */
-    public static function start()
+    public function start()
     {
         Session::start();
 

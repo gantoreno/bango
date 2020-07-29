@@ -16,4 +16,6 @@ use \Bango\App;
 
 // All the initialization routines must be added into the start method
 // in order for them to run before the website gets rendered.
-App::start();
+$app = new App();
+
+$app->start();
