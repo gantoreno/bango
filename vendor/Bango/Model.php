@@ -95,7 +95,7 @@ class Model
                         exit;
                     }
 
-                    if ($variable->type === integer)
+                    if ($variable->type === "integer")
                     {
                         $query .= "$value, ";
                     }
@@ -137,7 +137,7 @@ class Model
                         exit;
                     }
 
-                    if ($variable->type === integer)
+                    if ($variable->type === "integer")
                     {
                         $query .= "$field = $value, ";
                     }
@@ -201,11 +201,11 @@ class Model
             {
                 $type = $object->fields[$key]->type;
 
-                if ($type === integer)
+                if ($type === "integer")
                 {
                     $object->{$key} = (integer) $value;
                 }
-                else if ($type === boolean)
+                else if ($type === "boolean")
                 {
                     $object->{$key} = (boolean) $value;
                 }
