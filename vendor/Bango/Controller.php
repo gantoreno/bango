@@ -18,16 +18,15 @@ class Controller
      * @param  array  $variables
      * @return void
      */
-    public static function createView($view_name, $variables = NULL)
+    public static function createView($viewName, $variables = null)
     {
-        if ($variables !== NULL)
-        {
+        if ($variables !== null) {
             extract($variables, EXTR_PREFIX_SAME, "wddx");
         }
 
         ob_start();
 
-        require_once "views/$view_name.php";
+        require_once "views/$viewName.php";
 
         echo ob_get_clean();
     }

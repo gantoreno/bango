@@ -37,9 +37,9 @@ class RegisterController extends Controller
     {
         $email = $request->email;
         $password = $request->password;
-        $password_repeat = $request->password_repeat;
+        $passwordRepeat = $request->passwordRepeat;
 
-        if ($password !== $password_repeat)
+        if ($password !== $passwordRepeat)
         {
             Http::setStatus(401);
 

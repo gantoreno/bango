@@ -17,8 +17,7 @@ class LoginController extends Controller
     {
         $user = Session::getObject("user");
 
-        if (isset($user))
-        {
+        if (isset($user)) {
             Router::navigateTo("/");
         }
 
@@ -40,8 +39,7 @@ class LoginController extends Controller
 
         $user = User::where("email", "=", $email)->one();
 
-        if ($user === NULL)
-        {
+        if ($user === null) {
             Http::setStatus(401);
 
             self::createView("login.view", [
@@ -52,8 +50,7 @@ class LoginController extends Controller
             exit;
         }
 
-        if (!password_verify($password, $user->password))
-        {
+        if (!password_verify($password, $user->password)) {
             Http::setStatus(401);
 
             self::createView("login.view", [

@@ -53,7 +53,7 @@ class Session
             return $_SESSION[$key];
         }
 
-        return NULL;
+        return null;
     }
 
     /**
@@ -64,8 +64,7 @@ class Session
      */
     public static function destroyObject($key)
     {
-        if (isset($_SESSION[$key]))
-        {
+        if (isset($_SESSION[$key])) {
             unset($_SESSION[$key]);
         }
     }

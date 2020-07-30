@@ -25,17 +25,16 @@ class Environment
      */
     public static function start()
     {
-        $env_buffer = File::readFile(".env");
-        $env_pairs = explode("\n", $env_buffer);
+        $buffer = File::readFile(".env");
+        $pairs = explode("\n", $buffer);
 
-        foreach ($env_pairs as $env_pair)
-        {
-            $env_key_value = explode("=", $env_pair);
+        foreach ($pairs as $pair) {
+            $keyValuePair = explode("=", $pair);
 
-            $env_key = $env_key_value[0];
-            $env_value = $env_key_value[1];
+            $key = $keyValuePair[0];
+            $value = $keyValuePair[1];
 
-            self::$environment[$env_key] = $env_value;
+            self::$environment[$key] = $value;
         }
     }
 

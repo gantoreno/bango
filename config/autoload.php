@@ -6,21 +6,16 @@
  * @return void
  */
 spl_autoload_register(
-    function($class_name)
+    function($className)
     {
-        $class_name = str_replace("\\", "/", $class_name);
+        $className = str_replace("\\", "/", $className);
 
-        if (file_exists("models/$class_name.php"))
-        {
-            require_once "models/$class_name.php";
-        }
-        else if (file_exists("controllers/$class_name.php"))
-        {
-            require_once "controllers/$class_name.php";
-        }
-        else if (file_exists("vendor/$class_name.php"))
-        {
-            require_once "vendor/$class_name.php";
+        if (file_exists("models/$className.php")) {
+            require_once "models/$className.php";
+        } elseif (file_exists("controllers/$className.php")) {
+            require_once "controllers/$className.php";
+        } elseif (file_exists("vendor/$className.php")) {
+            require_once "vendor/$className.php";
         }
     }
 );

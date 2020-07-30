@@ -166,8 +166,7 @@ $user = new User();
 $user->email = "john@doe.com";
 $user->password = password_hash("johnisawesome", PASSWORD_DEFAULT);
 
-if ($user->save())
-{
+if ($user->save()) {
     // ...
 }
 ```
@@ -188,15 +187,13 @@ $user = User::where("email", "=", "john@doe.com");
 $user->email = "info@johndoe.com";
 $user->password = password_hash("johnisstillawesome", PASSWORD_DEFAULT);
 
-if ($user->update())
-{
+if ($user->update()) {
     // ...
 }
 
 // Or, if you want to delete it
 
-if ($user->delete())
-{
+if ($user->delete()) {
     // ...
 }
 ```

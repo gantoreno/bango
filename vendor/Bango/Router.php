@@ -18,28 +18,28 @@ class Router
      *
      * @var array
      */
-    public static $get_routes = [];
+    public static $getRoutes = [];
 
     /**
      * POST routes.
      *
      * @var array
      */
-    public static $post_routes = [];
+    public static $postRoutes = [];
 
     /**
      * PUT routes.
      *
      * @var array
      */
-    public static $put_routes = [];
+    public static $putRoutes = [];
 
     /**
      * DELETE routes.
      *
      * @var array
      */
-    public static $delete_routes = [];
+    public static $deleteRoutes = [];
 
     /**
      * Require all the available route files and start.
@@ -64,7 +64,7 @@ class Router
     {
         $route = self::urlToRoute($route);
 
-        self::$get_routes[$route] = $callback;
+        self::$getRoutes[$route] = $callback;
     }
 
     /**
@@ -78,7 +78,7 @@ class Router
     {
         $route = self::urlToRoute($route);
 
-        self::$post_routes[$route] = $callback;
+        self::$postRoutes[$route] = $callback;
     }
 
     /**
@@ -92,7 +92,7 @@ class Router
     {
         $route = self::urlToRoute($route);
 
-        self::$put_routes[$route] = $callback;
+        self::$putRoutes[$route] = $callback;
     }
 
     /**
@@ -106,7 +106,7 @@ class Router
     {
         $route = self::urlToRoute($route);
 
-        self::$delete_routes[$route] = $callback;
+        self::$deleteRoutes[$route] = $callback;
     }
 
     /**
@@ -131,13 +131,11 @@ class Router
         $method = $_SERVER["REQUEST_METHOD"];
         $route = self::urlToRoute($_SERVER["REQUEST_URI"]);
 
-        if ($method === "GET")
-        {
-            if (isset(self::$get_routes[$route]))
-            {
+        if ($method === "GET") {
+            if (isset(self::$getRoutes[$route])) {
                 Http::setStatus(200);
 
-                self::$get_routes[$route]((object) $_GET);
+                self::$getRoutes[$route]((object) $_GET);
 
                 exit;
             }
@@ -147,35 +145,27 @@ class Router
             ErrorController::handle404();
 
             exit;
-        }
-        else if ($method === "POST")
-        {
-            if (isset(self::$post_routes[$route]))
-            {
+        } elseif ($method === "POST") {
+            if (isset(self::$postRoutes[$route])) {
                 Http::setStatus(200);
 
-                self::$post_routes[$route]((object) $_POST);
+                self::$postRoutes[$route]((object) $_POST);
 
                 exit;
             }
-        }
-        else if ($method === "PUT")
-        {
-            if (isset(self::$put_routes[$route])) {
+        } elseif ($method === "PUT") {
+            if (isset(self::$putRoutes[$route])) {
                 Http::setStatus(200);
 
-                self::$put_routes[$route]((object) $_PUT);
+                self::$putRoutes[$route]((object) $_PUT);
 
                 exit;
             }
-        }
-        else if ($method === "DELETE")
-        {
-            if (isset(self::$put_routes[$route]))
-            {
+        } elseif ($method === "DELETE") {
+            if (isset(self::$putRoutes[$route])) {
                 Http::setStatus(200);
 
-                self::$put_routes[$route]((object) $_DELETE);
+                self::$putRoutes[$route]((object) $_DELETE);
 
                 exit;
             }
@@ -196,10 +186,8 @@ class Router
      */
     private static function urlToRoute($url)
     {
-        if (self::isValidUrl($url))
-        {
-            if ($url === "/")
-            {
+        if (self::isValidUrl($url)) {
+            if ($url === "/") {
                 return "index.php";
             }
 

@@ -21,22 +21,17 @@ class Cli
      */
     public static function parseAction($args)
     {
-        if (sizeof($args) > 1)
-        {
+        if (sizeof($args) > 1) {
             $action = $args[1];
 
-            switch($action)
-            {
+            switch($action) {
                 case 'migrate':
-                    try
-                    {
+                    try {
                         Environment::start();
                         
-                        Database::start($with_db = false);
+                        Database::start($withDatabase = false);
                         Database::migrate();
-                    }
-                    catch(Exception $e)
-                    {
+                    } catch(Exception $e) {
                         throw $e;
                     }
 
@@ -46,9 +41,7 @@ class Cli
 
                     break;
             }
-        }
-        else
-        {
+        } else {
             throw new Exception("You must provide at least one argument");
         }
     }

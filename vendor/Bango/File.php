@@ -23,14 +23,11 @@ class File
      */
     public static function readFile($file)
     {
-        try
-        {
+        try {
             $buffer = file_get_contents($file);
 
             return $buffer;
-        }
-        catch (Exception $e)
-        {
+        } catch (Exception $e) {
             die("Unable to read $file");
         }
     }
@@ -57,12 +54,10 @@ class File
         $dir = new RecursiveDirectoryIterator($path);
         $iterator = new RecursiveIteratorIterator($dir);
 
-        foreach ($iterator as $file)
-        {
-            $file_name = $file->getFilename();
+        foreach ($iterator as $file) {
+            $fileName = $file->getFilename();
 
-            if (preg_match('%\.php$%', $file_name))
-            {
+            if (preg_match('%\.php$%', $fileName)) {
                 require_once $file->getPathname();
             }
         }

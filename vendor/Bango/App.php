@@ -22,7 +22,7 @@ class App
 
         Environment::start();
         
-        Database::start($with_db = true);
+        Database::start($withDatabase = true);
         
         Router::start();
     }

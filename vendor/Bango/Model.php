@@ -32,7 +32,7 @@ class Model
      * 
      * @var mixed
      */
-    private $is_insertable = true;
+    private $isInsertable = true;
 
     /**
      * Creates the fillable fields as variables.
@@ -42,10 +42,9 @@ class Model
      */
     protected function createFields($variables)
     {
-        foreach ($variables as $variable => $type)
-        {
+        foreach ($variables as $variable => $type) {
             $this->fields[$variable] = (object) ["type" => $type];
-            $this->{$variable} = NULL;
+            $this->{$variable} = null;
         }
     }
 
@@ -67,14 +66,11 @@ class Model
      */
     public function save()
     {
-        if ($this->is_insertable) 
-        {
+        if ($this->isInsertable) {
             $query = "INSERT INTO $this->entity (";
 
-            foreach ($this->fields as $field => $variable)
-            {
-                if ($this->{$field} !== NULL)
-                {
+            foreach ($this->fields as $field => $variable) {
+                if ($this->{$field} !== null) {
                     $query .= "$field, ";
                 } 
             }
@@ -82,25 +78,19 @@ class Model
             $query = substr($query, 0, -2);
             $query .= ") VALUES (";
 
-            foreach ($this->fields as $field => $variable)
-            {
-                if ($this->{$field} !== NULL)
-                {
+            foreach ($this->fields as $field => $variable) {
+                if ($this->{$field} !== null) {
                     $value = $this->{$field};
 
-                    if (gettype($value) !== $variable->type)
-                    {
+                    if (gettype($value) !== $variable->type) {
                         throw new Exception("$field must be of type $type");
 
                         exit;
                     }
 
-                    if ($variable->type === "integer")
-                    {
+                    if ($variable->type === "integer") {
                         $query .= "$value, ";
-                    }
-                    else
-                    {
+                    } else {
                         $query .= "'$value', ";
                     }
                 } 
@@ -120,29 +110,22 @@ class Model
      */
     public function update()
     {
-        if (!$this->is_insertable)
-        {
+        if (!$this->isInsertable) {
             $query = "UPDATE $this->entity SET ";
 
-            foreach ($this->fields as $field => $variable)
-            {
-                if ($this->{$field} !== NULL)
-                {
+            foreach ($this->fields as $field => $variable) {
+                if ($this->{$field} !== null) {
                     $value = $this->{$field};
 
-                    if (gettype($value) !== $variable->type)
-                    {
+                    if (gettype($value) !== $variable->type) {
                         throw new Exception("$field must be of type $type");
 
                         exit;
                     }
 
-                    if ($variable->type === "integer")
-                    {
+                    if ($variable->type === "integer") {
                         $query .= "$field = $value, ";
-                    }
-                    else
-                    {
+                    } else {
                         $query .= "$field = '$value', ";
                     }
                 } 
@@ -165,8 +148,7 @@ class Model
      */
     public function delete()
     {
-        if (!$this->is_insertable)
-        {
+        if (!$this->isInsertable) {
             $id = get_object_vars($this)["id"];
             $query = "DELETE FROM $this->entity WHERE id = $id";
 
@@ -191,49 +173,40 @@ class Model
         $query = "SELECT * FROM $entity WHERE $parameter $operator '$value'";
         
         $result = Database::queryAll($query);
-        $final_array = [];
+        $finalArray = [];
         
-        if ($resut !== NULL || !empty($result))
-        {
-            foreach ($result as $entry)
-            {
+        if ($resut !== null || !empty($result)) {
+            foreach ($result as $entry) {
                 $object = new $class();
 
-                foreach($entry as $key => $value)
-                {
+                foreach($entry as $key => $value) {
                     $type = $object->fields[$key]->type;
 
-                    if ($type === "integer")
-                    {
+                    if ($type === "integer") {
                         $object->{$key} = (integer) $value;
-                    }
-                    else if ($type === "boolean")
-                    {
+                    } elseif ($type === "boolean") {
                         $object->{$key} = (boolean) $value;
-                    }
-                    else
-                    {
+                    } else {
                         $object->{$key} = $value;
                     }
                 }
 
-                $object->is_insertable = false;
+                $object->isInsertable = false;
 
-                $final_array[] = $object;
+                $finalArray[] = $object;
             }
         }
 
-        $options = new class($final_array) {
-            public function __construct($final_array)
+        $options = new class($finalArray) {
+            public function __construct($finalArray)
             {
-                $this->result = $final_array;
+                $this->result = $finalArray;
             }
 
             public function one()
             {
-                if (empty($this->result))
-                {
-                    return NULL;
+                if (empty($this->result)) {
+                    return null;
                 }
 
                 return $this->result[0];
@@ -241,9 +214,8 @@ class Model
 
             public function all()
             {
-                if (empty($this->result))
-                {
-                    return NULL;
+                if (empty($this->result)) {
+                    return null;
                 }
 
                 return $this->result;
@@ -268,22 +240,19 @@ class Model
 
         
         $result = Database::queryAll($query);
-        $final_array = [];
+        $finalArray = [];
         
-        foreach ($result as $entry)
-        {
+        foreach ($result as $entry) {
             $object = new $class();
 
-            foreach($entry as $key => $value)
-            {
+            foreach($entry as $key => $value) {
                 $object->{$key} = $value;
             }
 
-            $object->is_insertable = false;
-
-            $final_array[] = $object;
+            $object->isInsertable = false;
+            $finalArray[] = $object;
         }
         
-        return $final_array;
+        return $finalArray;
     }
 }

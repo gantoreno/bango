@@ -26,20 +26,17 @@ class Database
      *
      * @return void
      */
-    public static function start($with_db = true)
+    public static function start($withDatabase = true)
     {
-        $db_host = Environment::readEnv("DB_HOST");
-        $db_user = Environment::readEnv("DB_USER");
-        $db_pass = Environment::readEnv("DB_PASS");
-        $db_name = Environment::readEnv("DB_NAME");
+        $host = Environment::readEnv("DB_HOST");
+        $user = Environment::readEnv("DB_USER");
+        $pass = Environment::readEnv("DB_PASS");
+        $name = Environment::readEnv("DB_NAME");
 
-        if ($with_db)
-        {
-            self::$mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
-        }
-        else
-        {
-            self::$mysqli = new mysqli($db_host, $db_user, $db_pass);
+        if ($withDatabase) {
+            self::$mysqli = new mysqli($host, $user, $pass, $name);
+        } else {
+            self::$mysqli = new mysqli($host, $user, $pass);
         }
     }
 
@@ -50,14 +47,11 @@ class Database
      */
     public static function migrate()
     {
-        $migration = File::read_file("database/migration.sql");
+        $migration = File::readFile("database/migration.sql");
 
-        if (self::$mysqli->multi_query($migration))
-        {
+        if (self::$mysqli->multi_query($migration)) {
             echo "Migration successful\n";
-        }
-        else
-        {
+        } else {
             throw new Exception("Something went wrong while migrating\n");
         }
     }
@@ -72,14 +66,12 @@ class Database
     {
         $result = self::$mysqli->query($query);
 
-        if ($result->num_rows < 1)
-        {
-            if (self::$mysqli->affected_rows > 0)
-            {
+        if ($result->num_rows < 1) {
+            if (self::$mysqli->affected_rows > 0) {
                 return true;
             }
 
-            return NULL;
+            return null;
         }
 
         return $result;
@@ -95,19 +87,17 @@ class Database
     {
         $results = self::query($query);
 
-        if ($results !== NULL)
-        {
+        if ($results !== null) {
             $result_array = [];
 
-            while ($result = $results->fetch_assoc())
-            {
+            while ($result = $results->fetch_assoc()) {
                 $result_array[] = (object) $result;
             }
 
             return $result_array;
         }
 
-        return NULL;
+        return null;
     }
 
     /**
@@ -120,14 +110,11 @@ class Database
     {
         $results = self::query($query);
 
-        if ($results !== NULL)
-        {
-            $result_array = [];
-            
+        if ($results !== null) {
             return (object) $results->fetch_assoc();
         }
 
-        return NULL;
+        return null;
     }
 
     /**
@@ -138,6 +125,6 @@ class Database
      */
     public static function insertSingle($query)
     {
-        return self::query($query) !== NULL ? true : false;
+        return self::query($query) !== null ? true : false;
     }
 }

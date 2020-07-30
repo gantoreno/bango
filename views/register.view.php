@@ -45,14 +45,14 @@
                         />
                     </div>
                     <div class="form-group">
-                        <label for="password_repeat">Confirm password</label>
+                        <label for="passwordRpeat">Confirm password</label>
                         <br>
                         <input
                             class="form-control"
                             type="password"
-                            name="password_repeat"
-                            <?php if (isset($_POST["password_repeat"])): ?>
-                                value="<?= $_POST["password_repeat"] ?>"
+                            name="passwordRepeat"
+                            <?php if (isset($_POST["passwordRepeat"])): ?>
+                                value="<?= $_POST["passwordRepeat"] ?>"
                             <?php endif ?>
                             required
                         />
