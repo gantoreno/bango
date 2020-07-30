@@ -28,10 +28,10 @@ class Database
      */
     public static function start($with_db = true)
     {
-        $db_host = Environment::read_env("DB_HOST");
-        $db_user = Environment::read_env("DB_USER");
-        $db_pass = Environment::read_env("DB_PASS");
-        $db_name = Environment::read_env("DB_NAME");
+        $db_host = Environment::readEnv("DB_HOST");
+        $db_user = Environment::readEnv("DB_USER");
+        $db_pass = Environment::readEnv("DB_PASS");
+        $db_name = Environment::readEnv("DB_NAME");
 
         if ($with_db)
         {
@@ -91,7 +91,7 @@ class Database
      * @param  string $query
      * @return mixed
      */
-    public static function query_all($query)
+    public static function queryAll($query)
     {
         $results = self::query($query);
 
@@ -116,7 +116,7 @@ class Database
      * @param  string $query
      * @return mixed
      */
-    public static function query_single($query)
+    public static function querySingle($query)
     {
         $results = self::query($query);
 
@@ -136,7 +136,7 @@ class Database
      * @param  string $query
      * @return mixed
      */
-    public static function insert_single($query)
+    public static function insertSingle($query)
     {
         return self::query($query) !== NULL ? true : false;
     }

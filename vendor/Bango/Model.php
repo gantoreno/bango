@@ -40,7 +40,7 @@ class Model
      * @param  array $variables
      * @return void
      */
-    protected function create_fields($variables)
+    protected function createFields($variables)
     {
         foreach ($variables as $variable => $type)
         {
@@ -55,7 +55,7 @@ class Model
      * @param  string $entity
      * @return void
      */
-    protected function bind_entity($entity)
+    protected function bindEntity($entity)
     {
         $this->entity = $entity;
     }
@@ -109,7 +109,7 @@ class Model
             $query = substr($query, 0, -2);
             $query .= ")";
             
-            return Database::insert_single($query);
+            return Database::insertSingle($query);
         }
     }
 
@@ -190,7 +190,7 @@ class Model
         
         $query = "SELECT * FROM $entity WHERE $parameter $operator '$value'";
         
-        $result = Database::query_all($query);
+        $result = Database::queryAll($query);
         $final_array = [];
         
         if ($resut !== NULL || !empty($result))
@@ -267,7 +267,7 @@ class Model
         $query = "SELECT * FROM $entity";
 
         
-        $result = Database::query_all($query);
+        $result = Database::queryAll($query);
         $final_array = [];
         
         foreach ($result as $entry)

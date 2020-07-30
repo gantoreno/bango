@@ -25,7 +25,7 @@ class Environment
      */
     public static function start()
     {
-        $env_buffer = File::read_file(".env");
+        $env_buffer = File::readFile(".env");
         $env_pairs = explode("\n", $env_buffer);
 
         foreach ($env_pairs as $env_pair)
@@ -45,7 +45,7 @@ class Environment
      * @param  string $key
      * @return string
      */
-    public static function read_env($key)
+    public static function readEnv($key)
     {
         return self::$environment[$key];
     }

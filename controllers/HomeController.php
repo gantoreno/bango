@@ -13,8 +13,8 @@ class HomeController extends Controller
      */
     public static function index()
     {
-        self::create_view("home.view", [
-            "user" => Session::retrieve_object("user")
+        self::createView("home.view", [
+            "user" => Session::getObject("user")
         ]);
 
         exit;

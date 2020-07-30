@@ -13,8 +13,8 @@ class User extends Model
      */
     public function __construct()
     {
-        $this->bind_entity("users");
-        $this->create_fields([
+        $this->bindEntity("users");
+        $this->createFields([
             "id" => "integer", 
             "email" => "string", 
             "password" => "string"

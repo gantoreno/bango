@@ -15,14 +15,14 @@ class LoginController extends Controller
      */
     public static function index()
     {
-        $user = Session::retrieve_object("user");
+        $user = Session::getObject("user");
 
         if (isset($user))
         {
-            Router::navigate_to("/");
+            Router::navigateTo("/");
         }
 
-        self::create_view("login.view");
+        self::createView("login.view");
 
         exit;
     }
@@ -42,9 +42,9 @@ class LoginController extends Controller
 
         if ($user === NULL)
         {
-            Http::set_status(401);
+            Http::setStatus(401);
 
-            self::create_view("login.view", [
+            self::createView("login.view", [
                 "success" => false,
                 "message" => "User does not exist"
             ]);
@@ -54,9 +54,9 @@ class LoginController extends Controller
 
         if (!password_verify($password, $user->password))
         {
-            Http::set_status(401);
+            Http::setStatus(401);
 
-            self::create_view("login.view", [
+            self::createView("login.view", [
                 "success" => false,
                 "message" => "Wrong credentials"
             ]);
@@ -66,11 +66,11 @@ class LoginController extends Controller
 
         unset($user->password);
 
-        Session::set_object("user", $user);
+        Session::setObject("user", $user);
 
-        Http::set_status(200);
+        Http::setStatus(200);
 
-        Router::navigate_to("/");
+        Router::navigateTo("/");
 
         exit;
     }

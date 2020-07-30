@@ -36,7 +36,7 @@ class Session
      *
      * @return void
      */
-    public static function set_object($key, $value)
+    public static function setObject($key, $value)
     {
         $_SESSION[$key] = $value;
     }
@@ -47,7 +47,7 @@ class Session
      * @param  string $key
      * @return mixed
      */
-    public static function retrieve_object($key)
+    public static function getObject($key)
     {
         if (isset($_SESSION[$key])) {
             return $_SESSION[$key];
@@ -62,7 +62,7 @@ class Session
      * @param  string $key
      * @return void
      */
-    public static function destroy_object($key)
+    public static function destroyObject($key)
     {
         if (isset($_SESSION[$key]))
         {

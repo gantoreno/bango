@@ -18,7 +18,7 @@ class Controller
      * @param  array  $variables
      * @return void
      */
-    public static function create_view($view_name, $variables = NULL)
+    public static function createView($view_name, $variables = NULL)
     {
         if ($variables !== NULL)
         {

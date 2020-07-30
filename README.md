@@ -33,7 +33,7 @@ In order for Bango to use certain services (such as MySQL/MariaDB databases), yo
 ```php
 use \Bango\Environment;
 
-Environment::read_env("JWT_SECRET");
+Environment::readEnv("JWT_SECRET");
 ```
 
 ### Routes
@@ -48,7 +48,7 @@ Route::get("/about", "AboutController::index");
 
 ### Controllers
 
-Creating a controller is simple and easy, only place a new file under the `controllers` directory, following the pattern of `<controllername>Controller.php` (for example, `HomeController.php`, using PascalCase), extend the `Controller` class (remember to include it from the `Bango` namespace), and create your methods inside. As convention, if the controller is intended to render a view, you'll create an `index` method, calling `self::create_view` inside.
+Creating a controller is simple and easy, only place a new file under the `controllers` directory, following the pattern of `<controllername>Controller.php` (for example, `HomeController.php`, using PascalCase), extend the `Controller` class (remember to include it from the `Bango` namespace), and create your methods inside. As convention, if the controller is intended to render a view, you'll create an `index` method, calling `self::createView` inside.
 
 Inside `AboutController.php`:
 
@@ -65,7 +65,7 @@ class About extends Controller {
      */
     public static function index()
     {
-        self::create_view("about.view");
+        self::createView("about.view");
     }
 
     // ...
@@ -81,7 +81,7 @@ $name = "Gabriel";
 $age = 19;
 $gender = "M";
 
-self::create_view('<viewname>.view', [
+self::createView('<viewname>.view', [
     "person" => new Person($name, $age, $gender)
 ]);
 ```
@@ -141,8 +141,8 @@ class User extends Model
      */
     public function __construct()
     {
-        $this->bind_entity("users");
-        $this->create_fields([
+        $this->bindEntity("users");
+        $this->createFields([
             "id" => "integer", 
             "email" => "string", 
             "password" => "string"
@@ -151,7 +151,7 @@ class User extends Model
 }
 ```
 
-It's necessary to use the `bind_entity` method, since that registers the database table to which the model belongs (NOTE: The table must exist). And the `create_fields` has to describe all the fields inside the table, making sure that types match (`integer` for `INT`, `string` for `VARCHAR`, etc).
+It's necessary to use the `bindEntity` method, since that registers the database table to which the model belongs (NOTE: The table must exist). And the `createFields` has to describe all the fields inside the table, making sure that types match (`integer` for `INT`, `string` for `VARCHAR`, etc).
 
 After that, the model is available to use. To create a new model object you can do the following:
 

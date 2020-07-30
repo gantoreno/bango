@@ -15,14 +15,14 @@ class RegisterController extends Controller
      */
     public static function index()
     {
-        $user = Session::retrieve_object("user");
+        $user = Session::getObject("user");
 
         if (isset($user))
         {
-            Router::navigate_to("/");
+            Router::navigateTo("/");
         }
 
-        self::create_view("register.view");
+        self::createView("register.view");
 
         exit;
     }
@@ -41,9 +41,9 @@ class RegisterController extends Controller
 
         if ($password !== $password_repeat)
         {
-            Http::set_status(401);
+            Http::setStatus(401);
 
-            self::create_view("register.view", [
+            self::createView("register.view", [
                 "success" => false,
                 "message" => "Passwords must match"
             ]);
@@ -53,9 +53,9 @@ class RegisterController extends Controller
 
         if (User::where("email", "=", $email)->one())
         {
-            Http::set_status(401);
+            Http::setStatus(401);
 
-            self::create_view("register.view", [
+            self::createView("register.view", [
                 "success" => false,
                 "message" => "User already exists"
             ]);
@@ -72,19 +72,19 @@ class RegisterController extends Controller
         {
             unset($user->password);
     
-            Session::set_object("user", $user);
+            Session::setObject("user", $user);
             
-            Http::set_status(200);
+            Http::setStatus(200);
     
-            Router::navigate_to("/");
+            Router::navigateTo("/");
     
             exit;
         }
         else
         {            
-            Http::set_status(401);
+            Http::setStatus(401);
 
-            self::create_view("register.view", [
+            self::createView("register.view", [
                 "success" => false,
                 "message" => "Something went wrong, please try again"
             ]);

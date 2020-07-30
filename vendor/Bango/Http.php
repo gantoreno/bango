@@ -17,7 +17,7 @@ class Http
      * @param  int  $code
      * @return void
      */
-    public static function set_status($code)
+    public static function setStatus($code)
     {
         http_response_code($code);
     }

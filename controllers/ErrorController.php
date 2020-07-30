@@ -11,11 +11,11 @@ class ErrorController extends Controller
      *
      * @return void
      */
-    public static function handle_404()
+    public static function handle404()
     {
-        self::create_view("404.view", [
-            "auth" => Session::retrieve_object("auth"),
-            "user" => Session::retrieve_object("user")
+        self::createView("404.view", [
+            "auth" => Session::getObject("auth"),
+            "user" => Session::getObject("user")
         ]);
 
         exit;

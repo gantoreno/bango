@@ -19,7 +19,7 @@ class Cli
      * @param  array $args
      * @return void
      */
-    public static function parse_action($args)
+    public static function parseAction($args)
     {
         if (sizeof($args) > 1)
         {

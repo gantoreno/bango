@@ -48,7 +48,7 @@ class Router
      */
     public static function start()
     {
-        File::require_all("routes");
+        File::requireAll("routes");
 
         self::route();
     }
@@ -62,7 +62,7 @@ class Router
      */
     public static function get($route, $callback)
     {
-        $route = self::url_to_route($route);
+        $route = self::urlToRoute($route);
 
         self::$get_routes[$route] = $callback;
     }
@@ -76,7 +76,7 @@ class Router
      */
     public static function post($route, $callback)
     {
-        $route = self::url_to_route($route);
+        $route = self::urlToRoute($route);
 
         self::$post_routes[$route] = $callback;
     }
@@ -90,7 +90,7 @@ class Router
      */
     public static function put($route, $callback)
     {
-        $route = self::url_to_route($route);
+        $route = self::urlToRoute($route);
 
         self::$put_routes[$route] = $callback;
     }
@@ -104,7 +104,7 @@ class Router
      */
     public static function delete($route, $callback)
     {
-        $route = self::url_to_route($route);
+        $route = self::urlToRoute($route);
 
         self::$delete_routes[$route] = $callback;
     }
@@ -115,7 +115,7 @@ class Router
      * @param  string $url
      * @return void
      */
-    public static function navigate_to($url)
+    public static function navigateTo($url)
     {
         header("Location: $url");
     }
@@ -129,22 +129,22 @@ class Router
     public static function route()
     {
         $method = $_SERVER["REQUEST_METHOD"];
-        $route = self::url_to_route($_SERVER["REQUEST_URI"]);
+        $route = self::urlToRoute($_SERVER["REQUEST_URI"]);
 
         if ($method === "GET")
         {
             if (isset(self::$get_routes[$route]))
             {
-                Http::set_status(200);
+                Http::setStatus(200);
 
                 self::$get_routes[$route]((object) $_GET);
 
                 exit;
             }
 
-            Http::set_status(404);
+            Http::setStatus(404);
 
-            ErrorController::handle_404();
+            ErrorController::handle404();
 
             exit;
         }
@@ -152,7 +152,7 @@ class Router
         {
             if (isset(self::$post_routes[$route]))
             {
-                Http::set_status(200);
+                Http::setStatus(200);
 
                 self::$post_routes[$route]((object) $_POST);
 
@@ -162,7 +162,7 @@ class Router
         else if ($method === "PUT")
         {
             if (isset(self::$put_routes[$route])) {
-                Http::set_status(200);
+                Http::setStatus(200);
 
                 self::$put_routes[$route]((object) $_PUT);
 
@@ -173,7 +173,7 @@ class Router
         {
             if (isset(self::$put_routes[$route]))
             {
-                Http::set_status(200);
+                Http::setStatus(200);
 
                 self::$put_routes[$route]((object) $_DELETE);
 
@@ -181,7 +181,7 @@ class Router
             }
         }
 
-        Http::set_status(405);
+        Http::setStatus(405);
 
         echo "Cannot $method /$route";
 
@@ -194,9 +194,9 @@ class Router
      * @param  string $url
      * @return string
      */
-    private static function url_to_route($url)
+    private static function urlToRoute($url)
     {
-        if (self::is_valid_url($url))
+        if (self::isValidUrl($url))
         {
             if ($url === "/")
             {
@@ -213,7 +213,7 @@ class Router
      * @param  string $url
      * @return void
      */
-    private static function is_valid_url($url)
+    private static function isValidUrl($url)
     {
         return $url[0] === "/";
     }
@@ -225,7 +225,7 @@ class Router
      * @param  string  $route
      * @return boolean
      */
-    private static function should_execute_callback($method, $route)
+    private static function shouldExecuteCallback($method, $route)
     {
         return $_SERVER["REQUEST_METHOD"] === $method && $_GET["url"] === $route;
     }

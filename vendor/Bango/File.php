@@ -21,7 +21,7 @@ class File
      * @param  string $file
      * @return string
      */
-    public static function read_file($file)
+    public static function readFile($file)
     {
         try
         {
@@ -41,7 +41,7 @@ class File
      * @param  string $path
      * @return void
      */
-    function require_one($path)
+    function requireOne($path)
     {
         require_once $path;
     }
@@ -52,7 +52,7 @@ class File
      * @param  string $path
      * @return void
      */
-    public static function require_all($path)
+    public static function requireAll($path)
     {
         $dir = new RecursiveDirectoryIterator($path);
         $iterator = new RecursiveIteratorIterator($dir);

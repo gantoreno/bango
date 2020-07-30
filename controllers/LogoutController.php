@@ -14,10 +14,10 @@ class LogoutController extends Controller
      */
     public static function logout()
     {
-        Session::destroy_object("user");
+        Session::destroyObject("user");
 
-        Http::set_status(200);
+        Http::setStatus(200);
 
-        Router::navigate_to("/");
+        Router::navigateTo("/");
     }
 }
