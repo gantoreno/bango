@@ -24,7 +24,12 @@ Since Bango works with the MVC design pattern, new integration of custom element
 
 To see all of Bango's capabilities, take a look inside the `vendor/Bango` directory, and go through each class to see how they work.
 
-To get started, simply clone this directory, and start customizing the project! Bango's default structure contains a simple authentication system, you can leave it as it is, expand its capabilities, or remove it if you're not going to need it. Remember, it's just you, and PHP; possibilities are endless!
+To get started, simply clone this directory. Since (v0.1.1)[https://github.com/hollandsgabe/bango/releases/tag/v0.1.1] Bango supports (Docker)[https://www.docker.com/], you can get it up and running through the `Makefile`:
+
+```sh
+$ make # Or "make start" to start the project
+$ make migrate # To run the migrations
+```
 
 ### Environment variables
 
