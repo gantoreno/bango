@@ -24,7 +24,7 @@ Since Bango works with the MVC design pattern, new integration of custom element
 
 To see all of Bango's capabilities, take a look inside the `vendor/Bango` directory, and go through each class to see how they work.
 
-To get started, simply clone this directory. Since (v0.1.1)[https://github.com/hollandsgabe/bango/releases/tag/v0.1.1] Bango supports (Docker)[https://www.docker.com/], you can get it up and running through the `Makefile`:
+To get started, simply clone this directory. Since [v0.1.1](https://github.com/hollandsgabe/bango/releases/tag/v0.1.1) Bango supports [Docker](https://www.docker.com/), you can get it up and running through the `Makefile`:
 
 ```sh
 $ make # Or "make start" to start the project
