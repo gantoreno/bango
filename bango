@@ -5,12 +5,9 @@ require_once __DIR__."/config/autoload.php";
 
 use \Bango\Cli;
 
-try
-{
+try {
     Cli::parseAction($argv);
-}
-catch (Exception $e)
-{
+} catch (Exception $e) {
     die($e);
 }
 
