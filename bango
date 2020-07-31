@@ -7,7 +7,7 @@ use \Bango\Cli;
 
 try
 {
-    Cli::parse_action($argv);
+    Cli::parseAction($argv);
 }
 catch (Exception $e)
 {
