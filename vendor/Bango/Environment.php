@@ -31,8 +31,8 @@ class Environment
         foreach ($pairs as $pair) {
             $keyValuePair = explode("=", $pair);
 
-            $key = $keyValuePair[0];
-            $value = $keyValuePair[1];
+            $key = (isset($keyValuePair[0])) ? $keyValuePair[0] : null;
+            $value = (isset($keyValuePair[1])) ? $keyValuePair[1] : null;
 
             self::$environment[$key] = $value;
         }

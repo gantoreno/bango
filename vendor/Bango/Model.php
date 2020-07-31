@@ -175,7 +175,7 @@ class Model
         $result = Database::queryAll($query);
         $finalArray = [];
         
-        if ($resut !== null || !empty($result)) {
+        if ($result !== null || !empty($result)) {
             foreach ($result as $entry) {
                 $object = new $class();
 
