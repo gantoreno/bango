@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/svg/banner.svg" height="75">
+    <img src="assets/svg/logo.svg" height="150">
 </p>
 
 ## Disclaimer
@@ -148,8 +148,8 @@ class User extends Model
     {
         $this->bindEntity("users");
         $this->createFields([
-            "id" => "integer", 
-            "email" => "string", 
+            "id" => "integer",
+            "email" => "string",
             "password" => "string"
         ]);
     }

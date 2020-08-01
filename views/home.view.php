@@ -15,7 +15,7 @@
             <h1>Home</h1>
 
             <?php if (isset($user)): ?>
-                <p>Welcome back, <code><?= $user->email ?></code>.</p>
+                <p>Welcome back, <code><?= $user->email ?></code></p>
             <?php else: ?>
                 <p>User not authenticated</p>
             <?php endif ?>

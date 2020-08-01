@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="/assets/svg/banner.svg" height="33" class="d-inline-block align-top" alt="" loading="lazy">
+            <img src="/assets/svg/logo.svg" height="33" class="d-inline-block align-top" alt="" loading="lazy">
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
