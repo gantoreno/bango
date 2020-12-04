@@ -228,7 +228,7 @@ If everything went ok, you should receive back a `Migration successful` message.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Bango, please send an e-mail to Gabriel Moreno via [gamoreno@urbe.edu.ve](mailto:gamoreno@urbe.edu.ve). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Bango, please send an e-mail to Gabriel Moreno via [gantoreno@gmail.com](mailto:gantoreno@gmail.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
