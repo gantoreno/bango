@@ -226,6 +226,16 @@ $ php bango migrate
 
 If everything went ok, you should receive back a `Migration successful` message.
 
+### Docker
+
+To use Docker to serve the application, run `make`
+
+This will create the relevant containers and make the app available on http://localhost:8100
+
+A GUI to manage the DB is available on http://localhost:8081
+
+To run the migrations in the container, run `make migrate`
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Bango, please send an e-mail to Gabriel Moreno via [gantoreno@gmail.com](mailto:gantoreno@gmail.com). All security vulnerabilities will be promptly addressed.
